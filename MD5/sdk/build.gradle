@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion = rootProject.ext.compileSdkVersion
+    buildToolsVersion = rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersionApiLevel
+        targetSdkVersion rootProject.ext.targetSdkVersionApiLevel
+        versionCode = rootProject.ext.versionCode
+        versionName = rootProject.ext.versionName
+        buildConfigField "boolean", "ENABLE_DEBUG", "false"
+
+        ndk {
+            moduleName = "bihe0832MD5"
+            cFlags "-Werror"
+            ldLibs "log", "GLESv2"
+            stl = "stlport_static"
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility = rootProject.ext.EVN_JAVA_1_7
+        targetCompatibility = rootProject.ext.EVN_JAVA_1_7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = true
+            proguardFiles './../proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled = false
+        }
+    }
+
+    productFlavors {
+        create("all")
+    }
+
+}
