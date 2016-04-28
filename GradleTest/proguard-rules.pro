@@ -1,11 +1,12 @@
--optimizationpasses 5
--dontusemixedcaseclassnames
--dontskipnonpubliclibraryclasses
--dontpreverify
+-optimizationpasses 5                   # 指定代码的压缩级别
+-dontusemixedcaseclassnames             # 指定代码的压缩级别
+-dontskipnonpubliclibraryclasses        # 是否混淆第三方jar
+-dontpreverify                          # 混淆时是否做预校验
 -dontoptimize
--ignorewarning
--verbose
--optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+-ignorewarning                          # 忽略警告，避免打包时某些警告出现
+-verbose                                # 混淆时是否记录日志
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*    # 混淆时所采用的算法
+#-applymapping mapping.txt
 
 -keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
@@ -20,9 +21,3 @@
     native <methods>;
 }
 
--keep class com.bihe0832.gradletestlibrary.api.GradelTestApi.**{* ;}
-
--dontwarn java.nio.file.Files
--dontwarn java.nio.file.Path
--dontwarn java.nio.file.OpenOption
--dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
