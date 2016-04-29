@@ -106,7 +106,7 @@ checkResult
 
 echo "********copy apk *******"
 mkdir $localPath/bin/GradleTest
-cp $localPath/GradleTest/app/build/outputs/apk/app-all-debug.apk $localPath/bin/GradleTest-debug.apk
+cp $localPath/GradleTest/app/build/outputs/apk/app-debug.apk $localPath/bin/GradleTest-debug.apk
 
 
 
