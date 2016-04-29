@@ -18,7 +18,7 @@
 ## 体验Demo
 
 
-备注：**目前该热更的Demo下载更新时下载的so为ARM-v8的CPU类型的so**，如果因为机型不支持，建议通过adb push方式把对应CPU的so Push进去（不同CPU的so保存在根目录的DemoRes下）。或者直接修改源码中的下载地址，下载自己服务器的更新。
+备注：**目前该热更的Demo下载更新时下载的so为ARM-v8的CPU类型的so**，如果因为机型不支持，建议通过adb push方式把对应CPU的so Push到应用私有目录的files目录下（不同CPU的so保存在根目录的DemoRes下）。或者直接修改源码中的下载地址，下载自己服务器的更新。
 
 #### Demo 下载：
 	
