@@ -8,9 +8,9 @@
 
 ## 项目介绍
 
-该项目同样是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的So的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
-
 项目代码前期有参考dodola的HotFix项目，项目地址为：[https://github.com/dodola/HotFix](https://github.com/dodola/HotFix)
+
+该项目同样是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的So的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
 
 **该项目主要是提供给SDK的开发者使用，提供了第三方SDK如何实现自身热更新（包括Java代码和Native），如果是APP的开发者了解应用的热更新，建议参考dodola的HotFix项目，里面介绍的更全面。**
 
