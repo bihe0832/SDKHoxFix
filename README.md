@@ -26,13 +26,24 @@
 	
 - 扫码下载APK：
 	
-![获取大写md5值的函数调用流程](http://blog.bihe0832.com/public/images/gradle-test-hotfix-apk-download.png)
+![Demo下载二维码](http://blog.bihe0832.com/public/images/gradle-test-hotfix-apk-download.png)
 
 ## 代码介绍
 
 ### 目录结构
 
-待补充
+
+	Android-HoxFix-SDK-Native-Java
+		│
+		├─── MD5 SDK工程，最终打包后对外提供jar包和so，本项目主要也是介绍他的热更新
+		|
+		├─── build.sh 生成SDK的jar和so，生成Demo Apk的自动构建脚本
+		│
+		├─── GradleTest 普通的Android应用工程，调用了SDK提供的相关函数
+		│
+		├─── DemoRes 根据项目代码生成的jar和so的更新包以及热更相关的资源，体验demo功能时可以直接使用
+		│
+	   	└─── README.md 项目介绍
 
 ### 工程介绍
 
