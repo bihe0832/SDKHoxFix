@@ -20,7 +20,7 @@ public class HotFixConsts {
     //SDK补丁包必定会包含的类名
     public static final String DEFAULT_HTOFIX_TEST_DEX_CLASS = "com.bihe0832.hotfix.FixInfo";
 
-    public static final String PATCH_DEX_JAR = "patch_dex.jar";
+    public static final String PATCH_DEX_JAR = "bihe0832_patch_dex.jar";
     public static final String PATCH_SO = "bihe0832MD5";
     public static final String PATCH_DOWNLOAD_URL = "http://microdemo.sinaapp.com/hotfix";
 }

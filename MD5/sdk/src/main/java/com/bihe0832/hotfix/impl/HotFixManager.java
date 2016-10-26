@@ -48,8 +48,6 @@ public class HotFixManager {
             if(checkJarInFileExist()){
                 loadClassFromJar();
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
