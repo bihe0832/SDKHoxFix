@@ -11,11 +11,27 @@ function checkResult() {
    fi
 }  
 
+deleteempty() {
+  find ${1:-.} -mindepth 1 -maxdepth 1 -type d | while read -r dir
+  do
+    if [[ -z "$(find "$dir" -mindepth 1 -type f)" ]] >/dev/null
+    then
+      echo "$dir"
+      rm -rf ${dir} 2>&- && echo "Empty, Deleted!" || echo "Delete error"
+    fi
+    if [ -d ${dir} ]
+    then
+      deleteempty "$dir"
+    fi
+  done
+}
+
 if [ "$1"x = ""x ];then
   echo "***********************************************"
   echo "  Please Enter a Para for build.sh :"
   echo "    '/bin/bash ./build.sh md5' for build MD5 project"
   echo "    '/bin/bash ./build.sh GradleTestPre' for build MD5 and copy result to GradleTest"
+  echo "    '/bin/bash ./build.sh patch' for build a patch"
   echo "    '/bin/bash ./build.sh all' for build MD5 and GradleTest project both"
   echo "***********************************************"
   exit;
@@ -67,8 +83,24 @@ unzip -oqbC $localPath/bin/MD5/bihe0832MD5_old.jar -d $localPath/bin/temp/jar
 echo "********SDK build build hackdex *******"
 rm -f $localPath/bin/temp/jar/com/bihe0832/hotfix/Fix.class
 checkResult
-# 将默认的hackdex更新到assets
+
 cd $localPath/bin/temp/jar
+if [ "$1"x = "patch"x ];then
+  echo "********md5 build succ, will build patch *******"
+  mkdir $localPath/bin/Patch
+  rm -fr $localPath/bin/temp/jar/com/bihe0832/api
+  rm -fr $localPath/bin/temp/jar/com/bihe0832/hotfix/a
+  rm -fr $localPath/bin/temp/jar/com/bihe0832/hotfix/HotFixApi.class
+
+  jar cvf $localPath/bin/temp/jar/bihe0832_patch.jar *
+  cp -r $localPath/bin/temp/jar/bihe0832_patch.jar $localPath/bin/Patch/bihe0832_patch.jar
+  $ANDROID_HOME/build-tools/23.0.2/dx --dex --output=$localPath/bin/Patch/bihe0832_patch_dex.jar $localPath/bin/Patch/bihe0832_patch.jar
+  cp -r $localPath/bin/MD5/armeabi $localPath/bin/Patch
+  rm -fr $localPath/bin/temp
+  exit;
+fi 
+
+# 将默认的hackdex更新到assets
 if [ ! -d "./assets" ]; then
   mkdir $localPath/bin/temp/jar/assets
 fi

@@ -77,7 +77,11 @@
 
 3. 生成热更使用的补丁包
 
-	- 修改MD5下
+	- 修改MD5项目目录下FixInfo中的VERSION_NAME、VERSION_CODE、测试热更的bug函数
+	- 修改MD5项目目录下MD5文件中的getLowerMD5函数的bug
+	- 修改MD5项目目录下com_bihe0832_md5_MD5.cpp中的VERSION
+	- 在整个根目录执行命令 `/bin/bash ./build.sh patch`
+	- 
 4. 配置补丁
 5. 验证热更
 

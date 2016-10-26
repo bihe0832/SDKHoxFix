@@ -2,7 +2,7 @@
 #include "md5.h"
 #include <string>
 
-static const int VERSION = 10;
+static const int VERSION = 1;
 
 JNIEXPORT jint JNICALL Java_com_bihe0832_md5_MD5_getVersion (JNIEnv *env, jclass){
 	return (jint) VERSION;
