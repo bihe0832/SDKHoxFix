@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bihe0832.md5.MySDKApi;
+import com.bihe0832.api.MySDKApi;
 
 
 public class MainActivity extends Activity {

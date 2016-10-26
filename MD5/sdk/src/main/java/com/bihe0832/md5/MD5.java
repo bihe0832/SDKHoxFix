@@ -3,14 +3,14 @@ package com.bihe0832.md5;
 import android.app.Activity;
 import android.util.Log;
 
+import com.bihe0832.hotfix.FixInfo;
+
 /**
  *
  * @author bihe0832
  *
  */
 public class MD5 {
-
-	private static final int VERSION = 1;
 
 	private static volatile MD5 instance = null;
 	public static MD5 getInstance() {
@@ -29,11 +29,14 @@ public class MD5 {
 	}
 
 	public void onCreate(Activity activity) {
-		Log.d(Consts.LOG_TAG,"MD5 version name:"+Consts.VERSION_NAME);
-		Log.d(Consts.LOG_TAG,"MD5 version code:"+Consts.VERSION_CODE);
+		Log.d(Consts.LOG_TAG,"MD5 version name:" + FixInfo.VERSION_NAME);
+		Log.d(Consts.LOG_TAG,"MD5 version code:" + FixInfo.VERSION_CODE);
+		Log.d(Consts.LOG_TAG,"MD5 CPP version code:" + getVersion());
 	}
 
 	private native String getMD5Result(String encryptKey);
+
+	private native int getVersion();
 
 	public String getUpperMD5(String encryptKey){
 		String result = getMD5Result(encryptKey);

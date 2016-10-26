@@ -21,6 +21,8 @@
     native <methods>;
 }
 
--keep class com.bihe0832.md5.MySDKApi {public *;}
+-keep class com.bihe0832.api.MySDKApi {public *;}
+-keep class com.bihe0832.api.MySDKInnerApi {public static *;}
 -keep class com.bihe0832.hotfix.Fix{ public *;}
--keep class com.bihe0832.hotfix.FixTest{ public *;}
+-keep class com.bihe0832.hotfix.FixInfo{ public *;}
+-keep class com.bihe0832.hotfix.HotFixApi{ public *;}

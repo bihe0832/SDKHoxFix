@@ -10,10 +10,12 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true" >
-        <activity android:name="com.bihe0832.hotfixdemo.MainActivity" >
+        <activity
+            android:name="com.bihe0832.hotfixdemo.MainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

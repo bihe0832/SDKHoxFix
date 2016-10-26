@@ -21,6 +21,9 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_com_bihe0832_md5_MD5_getMD5Result
   (JNIEnv *, jclass, jstring);
 
+JNIEXPORT jint JNICALL Java_com_bihe0832_md5_MD5_getVersion
+(JNIEnv *, jclass);
+
 #ifdef __cplusplus
 }
 #endif

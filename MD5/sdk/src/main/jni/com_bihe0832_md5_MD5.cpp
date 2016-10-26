@@ -2,6 +2,12 @@
 #include "md5.h"
 #include <string>
 
+static const int VERSION = 10;
+
+JNIEXPORT jint JNICALL Java_com_bihe0832_md5_MD5_getVersion (JNIEnv *env, jclass){
+	return (jint) VERSION;
+}
+
 void md5ToHex(const unsigned char* buf, bool lower, unsigned char* dbuf){
     static const unsigned char hex_table1[16] = {'0', '1', '2', '3', '4', '5', '6', '7',
         '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};

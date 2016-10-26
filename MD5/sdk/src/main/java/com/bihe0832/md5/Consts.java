@@ -12,7 +12,6 @@ public class Consts {
     }
 
     public static final String LOG_TAG = "bihe0832 MD5";
-    public static final String VERSION_NAME = "1.0.0";
-    public static final int VERSION_CODE = 1;
+
 
 }

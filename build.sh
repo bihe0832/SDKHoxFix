@@ -62,6 +62,7 @@ echo "******** create new jar *******"
 #临时文件
 mkdir $localPath/bin/temp
 unzip -oqbC $localPath/bin/MD5/bihe0832MD5_old.jar -d $localPath/bin/temp/jar
+
 # 删除class中的Fix.class
 echo "********SDK build build hackdex *******"
 rm -f $localPath/bin/temp/jar/com/bihe0832/hotfix/Fix.class
@@ -71,7 +72,7 @@ cd $localPath/bin/temp/jar
 if [ ! -d "./assets" ]; then
   mkdir $localPath/bin/temp/jar/assets
 fi
-cp -r $localPath/MD5/bihe0832_hackdex.jar $localPath/bin/temp/jar/assets/
+cp -r $localPath/MD5/libs/bihe0832_hackdex.jar $localPath/bin/temp/jar/assets/
 checkResult
 #重新打包jar
 cd $localPath/bin/temp/jar
@@ -87,7 +88,8 @@ fi
 
 #拷贝最新包到GradleTest
 echo "********copy md5 so and jar to GradleTest*******"
-cp -r $localPath/MD5/sdk/build/intermediates/ndk/all/release/lib/* $localPath/GradleTest/app/src/main/jniLibs/
+rm -fr $localPath/GradleTest/app/src/main/jniLibs/*
+cp -r $localPath/bin/MD5/armeabi $localPath/GradleTest/app/src/main/jniLibs/
 checkResult
 cp -r $localPath/bin/MD5/bihe0832MD5.jar $localPath/GradleTest/app/libs/bihe0832MD5.jar
 checkResult
@@ -96,7 +98,6 @@ if [ "$1"x = "GradleTestPre"x ];then
   echo "********copy md5 so and jar to GradleTest succ, will exit *******"
   exit;
 fi 
-
 
 echo "********build GradleTest*******"
 chmod +x $localPath/GradleTest/gradlew

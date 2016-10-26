@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.bihe0832.hotfix.FixTest;
+import com.bihe0832.hotfix.FixInfo;
 import com.bihe0832.hotfix.consts.HotFixConsts;
 
 import java.io.File;
@@ -164,7 +164,7 @@ public class HotFixManager {
     }
 
     public void testHotfix(){
-        FixTest a = new FixTest();
+        FixInfo a = new FixInfo();
         Log.d(HotFixConsts.LOG_TAG,a.bug());
     }
 
