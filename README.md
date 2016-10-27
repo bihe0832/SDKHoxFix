@@ -28,7 +28,7 @@
 
 **由于本项目重点介绍重点SDK的热更新相关的内容，因此项目中的代码虽然是实现简单的功能，但是使用了SDK和demo等多个项目以及java和Native多层调用。**本项目中不会再介绍SDK相关的内容，建议可以先通过下面的链接了解这个项目的结构，然后再看热更新项目的内容，[点击了解Android-gradle-jni-so](https://github.com/bihe0832/Android-gradle-jni-so)。
 
-该项目是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的So的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
+该项目是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的so的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
 
 项目代码前期有参考dodola的HotFix项目，项目地址为：[https://github.com/dodola/HotFix](https://github.com/dodola/HotFix)
 
@@ -100,7 +100,7 @@
 
 4. 配置补丁
 	
-	- 将So和patch上传到对应的服务器地址，**切记不要修改名称**
+	- 将so和patch上传到对应的服务器地址，**切记不要修改名称**
 
 ### 2. 体验方法
 
@@ -111,7 +111,7 @@
 		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: onCreate
 		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: checkFileExist
 		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: File not found
-		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: loadLibsSo
+		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: loadLibsso
 		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: checkJarInFileExist
 		10-26 16:27:36.544 17093-17093/? D/bihe0832 Hotfix: File not found
 		10-26 16:27:36.544 17093-17093/? D/bihe0832 MySDKInnerApi: onCreate
@@ -132,7 +132,7 @@
 		10-26 16:27:42.204 17093-17093/com.bihe0832.hotfixdemo D/bihe0832 MySDKInnerApi: getLowerMD5
 		10-26 16:27:42.204 17093-17093/com.bihe0832.hotfixdemo D/bihe0832 Gradle: showResult:DBBCF8D34E9FB98A67B7DBFAFA9437AA
 
-2. 点击界面按钮出发热更新文件下载
+2. 点击界面按钮触发热更新文件下载
 - 热更新内容下载完成以后，会有toast，收到toast以后，重启应用然后体验功能，重点看日志中的版本号变化和输入任意字符的大小写md5。事例如下：
 
 		10-26 16:29:58.804 19691-19691/? D/bihe0832 Hotfix: version_name:1.0.0
@@ -140,7 +140,7 @@
 		10-26 16:29:58.804 19691-19691/? D/bihe0832 Hotfix: onCreate
 		10-26 16:29:58.804 19691-19691/? D/bihe0832 Hotfix: checkFileExist
 		10-26 16:29:58.804 19691-19691/? D/bihe0832 Hotfix: File exists:/data/data/com.bihe0832.hotfixdemo/files/libbihe0832MD5.so
-		10-26 16:29:58.804 19691-19691/? D/bihe0832 Hotfix: loadFilesSo
+		10-26 16:29:58.804 19691-19691/? D/bihe0832 Hotfix: loadFilesso
 		10-26 16:29:58.814 19691-19691/? D/bihe0832 Hotfix: checkJarInFileExist
 		10-26 16:29:58.814 19691-19691/? D/bihe0832 Hotfix: File exists:/data/data/com.bihe0832.hotfixdemo/files/bihe0832_patch_dex.jar
 		10-26 16:29:58.814 19691-19691/? D/bihe0832 Hotfix: loadClassFromJar
@@ -187,7 +187,7 @@
 
 #### 默认patch
 
-对应本项目，就是bihe0832_hackdex.jar，是一个dex文件，里面仅包含插桩用的com.bihe0832.hotfix.Fix的代码。是解决预校验的关键类，需要打包进SDK的jar包，负责在Android的低版本会有问题。
+对应本项目，就是bihe0832_hackdex.jar，是一个dex文件，里面仅包含插桩用的com.bihe0832.hotfix.Fix的代码。是解决预校验的关键类，需要打包进SDK的jar包，否则在Android的低版本会有问题。
 
 ### 3. 关键操作介绍
 
@@ -256,9 +256,9 @@ Demo中关于补丁包的生成非常简单，是手动确认要删除那些文�
 
 	SDK的热更新如果遇到异常，怎么回退来降低风险，不让热更变为制造灾难的最后一根稻草
 
-### 2. 关于SO的更新
+### 2. 关于so的更新
 
-目前的demo中只使用了arm的so，所以热更，但是SDK肯定要提供完整的SO，当需要提供完整的so的时候，怎么下发正确的so？这个问题可以参考作者之前的文章：[SDK热更之如何获取应用在当前设备上的so对应的指令集
+目前的demo中只使用了arm的so，所以热更，但是SDK肯定要提供完整的so，当需要提供完整的so的时候，怎么下发正确的so？这个问题可以参考作者之前的文章：[SDK热更之如何获取应用在当前设备上的so对应的指令集
 ](http://blog.bihe0832.com/SDK_hotfix_so_abi.html)
 
 ### 3. 关于运营维护
