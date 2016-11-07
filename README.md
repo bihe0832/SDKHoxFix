@@ -1,10 +1,16 @@
-# Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
+# SDKHotFix
+
+## 关键词
+
+Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 ## 〇、更新记录
 
 2016-04-29：完成demo代码和文档大纲。
 
 2016-10-26：完成文档介绍、Demo运行方式整理、增加补丁包的生成等方法。
+
+2016-11-07：调整项目名称，更简短
 
 ## 一、项目介绍
 
