@@ -12,6 +12,10 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 2016-11-07：调整项目名称，更简短
 
+**目前个人会陆续通过一系列文档来介绍这个项目的实现原理及运行方法。如想了解更多细节，请点击[http://blog.bihe0832.com/sdk_hotfix_project.html](http://blog.bihe0832.com/sdk_hotfix_project.html)了解。**
+
+**由于工作的原因，不能及时更新完成，可能会持续比较长的时间，请持续关注，如果有任何问题，可以及时通过issues联系协助。**
+
 ## 一、项目介绍
 
 继插件化后，热补丁技术在2015年开始爆发，目前已经是非常热门的Android开发技术。关于热更新以及这些方案的优缺点，之前微信团队已经分享过，而且分析的很好，因此这里就不重点介绍了。感兴趣的同学可以点击了解：[微信Android热补丁实践演进之路](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286306&idx=1&sn=d6b2865e033a99de60b2d4314c6e0a25&mpshare=1&scene=1&srcid=10266hBPguvWvTgHybtNDiCy#rd)
