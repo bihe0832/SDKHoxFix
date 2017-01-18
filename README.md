@@ -15,7 +15,7 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 2017-01-18：添加自动插桩构建项目、该项目是一个用groovy写的一个gradle的插件，后续我会在博客专门写文档来介绍。
 
 
-**目前个人会陆续通过一系列文档来介绍这个项目的实现原理及运行方法。如想了解更多细节，请点击[http://blog.bihe0832.com/sdk_hotfix_project.html](http://blog.bihe0832.com/sdk_hotfix_project.html)了解。**
+**README里面介绍了项目相关的一些核心内容，个人会陆续通过一系列文档来介绍这个项目的实现原理及运行方法的详细内容。如想了解更多细节，请点击[http://blog.bihe0832.com/sdk_hotfix_project.html](http://blog.bihe0832.com/sdk_hotfix_project.html)前往个人博客了解。**
 
 **由于工作的原因，不能及时更新完成，可能会持续比较长的时间，请持续关注，如果有任何问题，可以及时通过issues联系协助。**
 
