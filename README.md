@@ -183,18 +183,21 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 ### 1. 工程介绍
 
-	Android-HoxFix-SDK-Native-Java
+	SDKHoxFix
+		│
+		├─── BuildPatch SDK自动插桩、自动生成补丁的插件工程
 		│
 		├─── DemoRes 目前线上的demo使用的相关补丁内容
 		│
-		├─── MD5 SDK项目的工程，最终打包后对外提供jar包和so，本项目主要也是介绍他的热更新
-		│
 		├─── GradleTest 普通的Android应用工程，调用了SDK提供的相关函数，也就是SDK的使用者
+		│
+		├─── MD5 SDK项目的工程，最终打包后对外提供jar包和so，本项目主要也是介绍他的热更新
 		|
-		├─── build.sh 生成SDK的jar和so，生成Demo对应的补丁文件、生成Demo Apk的自动构建脚本
+		├─── build.sh SDK相关的自动构建脚本，生成SDK的jar、so、Demo、补丁文件
+		|
+		├─── Res README中用到的各种框架图、流程图等
 		│
 	   	└─── README.md 项目介绍
-
 #### 备注：后面的内容都重点介绍整个热更新相关的内容，这里补充一下目前的demo项目存在的一些注意事项。
 
 1. SDK的生成只能用命令行，因为分包生成支持热更的SDK是通过shell脚本实现的，直接gradle生成的jar并不可用
