@@ -1,0 +1,2 @@
+com.bihe0832.hotfix.FixInfo.class:dee4bb9cf6c0a68626cf60e40d9fc1bb50a22360
+com.bihe0832.md5.MD5.class:a93015e69a83f12891919f0b04172594c5da23e2

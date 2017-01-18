@@ -2,6 +2,8 @@ package com.bihe0832.api;
 
 import android.app.Activity;
 
+import com.bihe0832.hotfix.HotFixApi;
+
 import java.lang.reflect.Method;
 
 
@@ -12,9 +14,7 @@ public class MySDKApi {
 
     public static void onCreate(Activity activity) {
         try {
-            Class<?> hotfixClass = Class.forName("com.bihe0832.hotfix.HotFixApi");
-            Method method1 = hotfixClass.getMethod("onCreate", Activity.class);
-            method1.invoke(null, activity);
+            HotFixApi.onCreate(activity.getApplicationContext());
             Class<?> threadClazz = Class.forName("com.bihe0832.api.MySDKInnerApi");
             Method method = threadClazz.getMethod("onCreate", Activity.class);
             method.invoke(null, activity);

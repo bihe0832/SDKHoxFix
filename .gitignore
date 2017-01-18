@@ -1,2 +1,14 @@
 
 bin/
+
+.gradle/
+
+.gradletasknamecache
+
+.idea
+
+build
+
+*.iml
+
+BuildPatch/local.properties

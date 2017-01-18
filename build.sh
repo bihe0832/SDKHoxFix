@@ -64,55 +64,62 @@ cd $localPath/MD5 && ./gradlew clean
 cd $localPath/MD5 && ./gradlew build
 checkResult
 
-
-#拷贝最新资源到bin
-echo "********copy md5 so and jar to bin *******"
-mkdir $localPath/bin/MD5
-cp -r $localPath/MD5/sdk/build/intermediates/ndk/all/release/lib/* $localPath/bin/MD5/
-checkResult
-cp -r $localPath/MD5/sdk/build/intermediates/bundles/all/release/classes.jar $localPath/bin/MD5/bihe0832MD5_old.jar
-checkResult
-
 #制作多dex包
 echo "******** create new jar *******"
-#临时文件
-mkdir $localPath/bin/temp
-unzip -oqbC $localPath/bin/MD5/bihe0832MD5_old.jar -d $localPath/bin/temp/jar
+cd $localPath/MD5
+if [ ! -d "./bin" ]; then
+  mkdir $localPath/MD5/bin
+fi
+#进入打包目录并清空目录
+cd $localPath/MD5/bin && rm -rf * && mkdir $localPath/MD5/bin/temp
+cp -r $localPath/MD5/sdk/build/intermediates/bundles/release/classes.jar $localPath/MD5/bin/temp/bihe0832MD5_old.jar
+unzip -oqbC $localPath/MD5/bin/temp/bihe0832MD5_old.jar -d $localPath/MD5/bin/temp/jar
+cd $localPath/MD5 && ./gradlew processJarAndGetJarHash
+checkResult
+
+if [ "$1"x = "patch"x ];then
+  echo "********md5 build succ, will build patch *******"
+  cd $localPath/MD5 && ./gradlew buildPatch
+  checkResult
+  cd $localPath/MD5/bin/temp/jar
+  deleteempty
+  jar cvf $localPath/MD5/bin/temp/jar/bihe0832_patch.jar *
+  cp -r $localPath/MD5/bin/temp/jar/bihe0832_patch.jar $localPath/MD5/bin/bihe0832_patch.jar
+  $ANDROID_HOME/build-tools/23.0.2/dx --dex --output=$localPath/MD5/bin/bihe0832_patch_dex.jar $localPath/MD5/bin/temp/jar/bihe0832_patch.jar
+  cp -r $localPath/MD5/bin/bihe0832_patch_dex.jar $localPath/bin/bihe0832_patch_dex.jar
+  rm -fr $localPath/MD5/bin/temp
+  echo "********SDK build patch end*******"
+exit;
+fi 
 
 # 删除class中的Fix.class
 echo "********SDK build build hackdex *******"
-rm -f $localPath/bin/temp/jar/com/bihe0832/hotfix/Fix.class
-checkResult
-
-cd $localPath/bin/temp/jar
-if [ "$1"x = "patch"x ];then
-  echo "********md5 build succ, will build patch *******"
-  mkdir $localPath/bin/Patch
-  rm -fr $localPath/bin/temp/jar/com/bihe0832/api
-  rm -fr $localPath/bin/temp/jar/com/bihe0832/hotfix/a
-  rm -fr $localPath/bin/temp/jar/com/bihe0832/hotfix/HotFixApi.class
-
-  jar cvf $localPath/bin/temp/jar/bihe0832_patch.jar *
-  cp -r $localPath/bin/temp/jar/bihe0832_patch.jar $localPath/bin/Patch/bihe0832_patch.jar
-  $ANDROID_HOME/build-tools/23.0.2/dx --dex --output=$localPath/bin/Patch/bihe0832_patch_dex.jar $localPath/bin/Patch/bihe0832_patch.jar
-  cp -r $localPath/bin/MD5/armeabi $localPath/bin/Patch
-  rm -fr $localPath/bin/temp
-  exit;
-fi 
-
+cd $localPath/MD5/bin/temp/jar
 # 将默认的hackdex更新到assets
 if [ ! -d "./assets" ]; then
-  mkdir $localPath/bin/temp/jar/assets
+  mkdir $localPath/MD5/bin/temp/jar/assets
 fi
-cp -r $localPath/MD5/libs/bihe0832_hackdex.jar $localPath/bin/temp/jar/assets/
+cp -r $localPath/MD5/libs/bihe0832_hackdex.jar $localPath/MD5/bin/temp/jar/assets/
 checkResult
 #重新打包jar
-cd $localPath/bin/temp/jar
-jar cvf $localPath/bin/temp/jar/classes.jar *
-cp -r $localPath/bin/temp/jar/classes.jar $localPath/bin/MD5/bihe0832MD5.jar
+cd $localPath/MD5/bin/temp/jar
+jar cvf $localPath/MD5/bin/temp/jar/classes.jar *
+cp -r $localPath/MD5/bin/temp/jar/classes.jar $localPath/MD5/bin/bihe0832MD5.jar
+cp -r $localPath/MD5/bin/temp/bihe0832MD5_old.jar $localPath/MD5/bin/bihe0832MD5_old.jar
+
+#拷贝最新资源到bin
+echo "********copy md5 so to bin *******"
+mkdir $localPath/bin/MD5
+cp -r $localPath/MD5/sdk/build/intermediates/ndk/release/lib/armeabi $localPath/bin/MD5/
 checkResult
 
-rm -fr $localPath/bin/temp
+cp -r $localPath/MD5/bin/bihe0832MD5.jar $localPath/bin/MD5/bihe0832MD5.jar
+cp -r $localPath/MD5/bin/temp/*_hash.txt $localPath/MD5/bin/
+cp -r $localPath/MD5/bin/*_hash.txt $localPath/bin/MD5/
+cp -r $localPath/MD5/bin/*_hash.txt $localPath/MD5/libs/hash/
+checkResult
+
+rm -fr $localPath/MD5/bin/temp
 if [ "$1"x = "md5"x ];then
   echo "********md5 build succ, will exit *******"
   exit;

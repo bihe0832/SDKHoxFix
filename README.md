@@ -235,7 +235,7 @@ Demo中关于补丁包的生成非常简单，是手动确认要删除那些文�
 
 - **SDK初始化简单流程**
 
-![SDK初始化简单流程](./hotfix_sample.jpg "SDK初始化简单流程")
+![SDK初始化简单流程](./Res/hotfix_sample.jpg "SDK初始化简单流程")
 
 ## 四、待优化点
 
@@ -292,10 +292,10 @@ Demo中关于补丁包的生成非常简单，是手动确认要删除那些文�
 
 - **SDK初始化详细流程**
 
-![SDK初始化详细流程](./ysdk_hotfix_detail.jpg "SDK初始化详细流程")
+![SDK初始化详细流程](./Res/ysdk_hotfix_detail.jpg "SDK初始化详细流程")
 
 - **增量内容加载详细流程**
 
-![增量内容加载详细流程](./ysdk_patch_load.jpg "增量内容加载详细流程")
+![增量内容加载详细流程](./Res/ysdk_patch_load.jpg "增量内容加载详细流程")
 
 

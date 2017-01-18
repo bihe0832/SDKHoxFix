@@ -24,10 +24,6 @@ public class MD5 {
 		return instance;
 	}
 
-	private MD5() {
-		Log.d(Consts.LOG_TAG,com.bihe0832.hotfix.Fix.class.getName());
-	}
-
 	public void onCreate(Activity activity) {
 		Log.d(Consts.LOG_TAG,"MD5 version name:" + FixInfo.VERSION_NAME);
 		Log.d(Consts.LOG_TAG,"MD5 version code:" + FixInfo.VERSION_CODE);

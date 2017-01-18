@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 android {
 
     compileSdkVersion = rootProject.ext.compileSdkVersion
@@ -38,9 +37,21 @@ android {
             minifyEnabled = false
         }
     }
+}
 
-    productFlavors {
-        create("all")
-    }
-
+apply plugin: 'com.bihe0832.buildPatch'
+PatchConfig {
+    //不可以被热更的类列表
+    excludeClass = ['com.bihe0832.api.',
+            'com.bihe0832.hotfix.HotFixApi',
+            'com.bihe0832.hotfix.a'
+    ]
+    //被热更的SDK的版本号
+    oldSDKVersion = 3
+    //热更后升级到的SDK的版本号
+    newSDKVersion = rootProject.ext.versionCode
+    //SDK补丁包中一定会保留的类，可以没有
+    patchCoreClass = "com.bihe0832.hotfix.FixInfo.class"
+    //SDK插桩使用的类的类名，这个类在生成SDK或者补丁的时候一定会被删除
+    patchPileClass = "com.bihe0832.hotfix.Fix.class"
 }

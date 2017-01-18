@@ -5,7 +5,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.bihe0832.hotfix.FixInfo;
-import com.bihe0832.hotfix.consts.HotFixConsts;
+import com.bihe0832.hotfix.impl.consts.HotFixConsts;
 
 import java.io.File;
 
