@@ -18,7 +18,6 @@ allprojects {
     }
 }
 
-
 ext {
     minSdkVersionApiLevel = 8
     targetSdkVersionApiLevel = 22

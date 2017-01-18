@@ -12,6 +12,8 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 2016-11-07：调整项目名称，更简短
 
+2017-01-18：添加自动插桩构建项目、该项目是一个用groovy写的一个gradle的插件，后续我会在博客专门写文档来介绍。
+
 **目前个人会陆续通过一系列文档来介绍这个项目的实现原理及运行方法。如想了解更多细节，请点击[http://blog.bihe0832.com/sdk_hotfix_project.html](http://blog.bihe0832.com/sdk_hotfix_project.html)了解。**
 
 **由于工作的原因，不能及时更新完成，可能会持续比较长的时间，请持续关注，如果有任何问题，可以及时通过issues联系协助。**
@@ -31,7 +33,7 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 **该项目主要是提供给SDK的开发者使用，提供了SDK开发者如何实现SDK自身热更新（包括Java代码和Native），如果是APP的开发者了解应用的热更新，建议参考dodola的HotFix项目，里面介绍的更全面。**
 
-**为了降低项目的理解难度，关于java热更新，该项目暂时不会涉及怎么管理版本号、怎么在代码中插桩、怎么生成版本差异包、怎么将差异包编为dex文件等内容，这部分内容我会在另外的项目来介绍。**
+**为了降低项目的理解难度，关于java热更新，该项目暂时不会涉及怎么管理版本号、同时将怎么在代码中插桩、怎么生成版本差异包、怎么将差异包编为dex文件等内容封装在构建脚本中，这部分内容在体验时可以不用关注。**
 
 **为了降低项目的理解难度，关于so的热更新，该项目暂时仅使用arm的so，关于如何在热更时根据so的类型来选择下发什么类型的so，请参考作者之前的文章 [SDK热更之如何获取应用在当前设备上的so对应的指令集
 ](http://blog.bihe0832.com/SDK_hotfix_so_abi.html)。**
@@ -41,6 +43,9 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 该项目是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的so的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
 
 项目代码前期有参考dodola的HotFix项目，项目地址为：[https://github.com/dodola/HotFix](https://github.com/dodola/HotFix)
+
+项目自动插桩脚本有参考jasonross的项目NuwaGradle，项目地址为：[https://github.com/jasonross/NuwaGradle](https://github.com/jasonross/NuwaGradle)
+
 
 ## 二、体验Demo
 
@@ -71,7 +76,7 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 			    │
 			    ├── bihe0832MD5.jar ：支持热更的SDK的版本
 			    │
-			    ├── bihe0832MD5_old.jar ：SDK编译生成的原始jar
+			    ├── *_hash.txt ：对应版本SDK插桩以后的文件的md5值
 			    │
 			    ├── armeabi
 			    │		│
@@ -91,7 +96,8 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 3. 生成热更使用的补丁包
 
-	- 修改MD5项目目录下FixInfo中的VERSION_NAME、VERSION_CODE、测试热更的bug函数
+	- 修改MD5下build.gradle中的versionCode和versionName，这里填写新版本的版本号
+	- 修改MD5项目目录下FixInfo中的VERSION_NAME、VERSION_CODE、测试热更的bug函数，这里填写新版本的版本号
 	- 修改MD5项目目录下MD5文件中的getLowerMD5函数的bug
 	- 修改MD5项目目录下com_bihe0832_md5_MD5.cpp中的VERSION
 	- 修改根目录下build.sh中使用的build-tool的版本（`$ANDROID_HOME/build-tools/23.0.2/dx --dex ……`），例如默认使用的为23.0.2
@@ -221,7 +227,7 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 #### 生成补丁包
 
-Demo中关于补丁包的生成非常简单，是手动确认要删除那些文件来实现的（参见build.sh），后续介绍自动插桩的时候会介绍怎么自动生成，主要原理为：
+Demo中关于补丁包生成通过自动构建生成，主要原理为：
 
 - 拿到SDK编译后的完整jar
 - 解压jar，删除com.bihe0832.hotfix.Fix文件

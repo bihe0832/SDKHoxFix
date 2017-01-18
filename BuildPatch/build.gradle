@@ -6,9 +6,7 @@ group "com.bihe0832"
 archivesBaseName = 'BuildPatch'
 
 repositories {
-    maven{
-        url "http://maven.oa.com/nexus/content/repositories/android"
-    }
+    maven { url "http://maven.bihe0832.com:8081/nexus/content/repositories/android"}
 }
 
 dependencies {
