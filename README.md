@@ -65,16 +65,3 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 项目自动插桩脚本有参考jasonross的项目NuwaGradle，项目地址为：[https://github.com/jasonross/NuwaGradle](https://github.com/jasonross/NuwaGradle)
 
-### 其他
-
-这里附上我们目前SDK的初始化时的流程图
-
-- **SDK初始化详细流程**
-
-![SDK初始化详细流程](./Res/ysdk_hotfix_detail.jpg "SDK初始化详细流程")
-
-- **增量内容加载详细流程**
-
-![增量内容加载详细流程](./Res/ysdk_patch_load.jpg "增量内容加载详细流程")
-
-
