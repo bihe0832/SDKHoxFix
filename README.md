@@ -59,10 +59,6 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 	包括SDK的工程介绍以及一些核心文件和关键操作的介绍
 
-- SDK热更之SDKHotfix待优化点：[http://blog.bihe0832.com/sdk_hotfix_need_to_do.html](http://blog.bihe0832.com/sdk_hotfix_need_to_do.html)
-
-	主要从安全性、后续的代码维护两个方面介绍了SDKHotfix中没有增加的相关内容。
-
 - SDK热更之如何在SDK代码中自动插桩及如何生成补丁包：[http://blog.bihe0832.com/sdk_hotfix_patch.html](http://blog.bihe0832.com/sdk_hotfix_patch.html)
 
 	主要介绍SDK怎么插桩、怎么生成补丁的原理；文章主要是介绍原理，没有对具体实现的代码做详细解读。
@@ -72,6 +68,11 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 	目前的demo中只使用了arm的so，但是对于SDK的热更新，肯定要提供完整的so，当需要提供完整的so的时候，怎么下发正确的so主要在这边文章介绍
 
+
+
+- SDK热更之SDKHotfix待优化点：[http://blog.bihe0832.com/sdk_hotfix_need_to_do.html](http://blog.bihe0832.com/sdk_hotfix_need_to_do.html)
+
+	主要从安全性、后续的代码维护两个方面介绍了SDKHotfix中没有增加的相关内容。
 
 ## 四、其他
 
