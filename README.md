@@ -35,8 +35,26 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 ![Demo下载二维码](http://blog.bihe0832.com/public/images/gradle-test-hotfix-apk-download.png)
 
 
-## 三、代码介绍
+## 三、工程介绍
 
+### 代码目录简介
+
+	SDKHoxFix
+		│
+		├─── BuildPatch SDK自动插桩、自动生成补丁的插件工程
+		│
+		├─── DemoRes 目前线上的demo使用的相关补丁内容
+		│
+		├─── GradleTest 普通的Android应用工程，调用了SDK提供的相关函数，也就是SDK的使用者
+		│
+		├─── MD5 SDK项目的工程，最终打包后对外提供jar包和so，本项目主要也是介绍他的热更新
+		|
+		├─── build.sh SDK相关的自动构建脚本，生成SDK的jar、so、Demo、补丁文件
+		│
+	   	└─── README.md 项目介绍
+	 
+### 代码介绍
+	
 - SDK热更之Demo工程介绍：[http://blog.bihe0832.com/sdk_hotfix_demo_project.html](http://blog.bihe0832.com/sdk_hotfix_demo_project.html)
 
 	包括SDK的工程介绍以及一些核心文件和关键操作的介绍
@@ -59,9 +77,9 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 
 ### 参考及引用
 
-该项目是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的so的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
+- 该项目是基于QQ空间终端开发团队的技术文章实现的，然后补充了Native的so的动态加载相关的内容。文章地址：[安卓App热补丁动态修复技术介绍](http://zhuanlan.zhihu.com/magilu/20308548)
 
-项目代码前期有参考dodola的HotFix项目，项目地址为：[https://github.com/dodola/HotFix](https://github.com/dodola/HotFix)
+- 项目代码前期有参考dodola的HotFix项目，项目地址为：[https://github.com/dodola/HotFix](https://github.com/dodola/HotFix)
 
-项目自动插桩脚本有参考jasonross的项目NuwaGradle，项目地址为：[https://github.com/jasonross/NuwaGradle](https://github.com/jasonross/NuwaGradle)
+- 项目自动插桩脚本有参考jasonross的项目NuwaGradle，项目地址为：[https://github.com/jasonross/NuwaGradle](https://github.com/jasonross/NuwaGradle)
 
