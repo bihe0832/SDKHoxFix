@@ -4,7 +4,7 @@ import org.objectweb.asm.*
 
 class Processor {
 
-    private static byte[] referHackWhenInit(InputStream inputStream) {
+    private static byte[] referHackWhenInit(InputStream inputStream,String sigHackClassName) {
         ClassReader cr = new ClassReader(inputStream);
         ClassWriter cw = new ClassWriter(cr, 0);
         ClassVisitor cv = new ClassVisitor(Opcodes.ASM4, cw) {
@@ -17,7 +17,7 @@ class Processor {
                     @Override
                     void visitInsn(int opcode) {
                         if ("<init>".equals(name) && opcode == Opcodes.RETURN) {
-                            super.visitLdcInsn(Type.getType("Lcom/tencent/ysdk/framework/hotfix/impl/Fix;"));
+                            super.visitLdcInsn(Type.getType(sigHackClassName));
                         }
                         super.visitInsn(opcode);
                     }
@@ -34,13 +34,13 @@ class Processor {
         return entryName.endsWith(".class") && CommonUtils.isIncluded(entryName, includePackage) && !CommonUtils.isExcluded(entryName, excludeClass) && !entryName.contains("android/support/")
     }
 
-    public static byte[] processClass(File file) {
+    public static byte[] processClass(File file,String sigHackClassName) {
         def optClass = new File(file.getParent(), file.name + ".opt")
 
         FileInputStream inputStream = new FileInputStream(file);
         FileOutputStream outputStream = new FileOutputStream(optClass)
 
-        def bytes = referHackWhenInit(inputStream);
+        def bytes = referHackWhenInit(inputStream,sigHackClassName);
         outputStream.write(bytes)
         inputStream.close()
         outputStream.close()

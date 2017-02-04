@@ -1,2 +1,2 @@
-com.bihe0832.hotfix.FixInfo.class:dee4bb9cf6c0a68626cf60e40d9fc1bb50a22360
-com.bihe0832.md5.MD5.class:a93015e69a83f12891919f0b04172594c5da23e2
+com.bihe0832.hotfix.FixInfo.class:b0f930ca27381750602fe812caaf8f0266eeeed8
+com.bihe0832.md5.MD5.class:2d40a957e889c79549782aa166eaa7d59796d7af

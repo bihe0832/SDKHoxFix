@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.+'
-        classpath 'com.bihe0832:BuildPatch:1.0.0'
+        classpath 'com.bihe0832:BuildPatch:1.+'
     }
 }
 

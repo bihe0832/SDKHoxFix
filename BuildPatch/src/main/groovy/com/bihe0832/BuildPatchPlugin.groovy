@@ -91,19 +91,27 @@ class BuildPatchPlugin implements Plugin<Project> {
 
         project.task(TASK_PATCH_HACKJAR_JAR2HASH) << {
             println(TASK_PATCH_HACKJAR_JAR2HASH)
-
+            //获取插件相关变量的定义
             def extension = project.extensions.findByName(PatchConfig) as BuildPatchPluginExtension
             def excludeClass = extension.excludeClass
+            //获取构建目录的绝对路径
             String inputFileDir = project.buildDir.absolutePath + EXTEND_BUILD_DIR
             def hashFile = new File(inputFileDir +"/../", getHashFileName(extension.newSDKVersion))
             if(hashFile.exists()){
                 hashFile.delete()
             }
             hashFile.createNewFile();
-            FileTree tree = project.fileTree(dir: inputFileDir)
-            Set<File> inputFiles = tree.files
-            println tree.size()
-            println(inputFiles.properties)
+            //获取构建目录下的文件列表
+            FileTree tree = project.fileTree(dir: inputFileDir);
+            Set<File> inputFiles = tree.files;
+            println tree.size();
+            println(inputFiles.properties);
+            println(extension.patchPileClass);
+            //生成插桩类的签名，用于文件插桩
+            String hackClassName = extension.patchPileClass.substring(0,extension.patchPileClass.length()-6);
+            String sigClassName = hackClassName.replace(".","/");
+            sigClassName = "L" + sigClassName + ";";
+            println(sigClassName);
             inputFiles.each { inputFile ->
                 def path = inputFile.absolutePath
                 //目前因为个人项目仅需要class文件，因此仅保留了class文件，其余文件一律不打入补丁包，因此没有计算其余文件的md5
@@ -119,7 +127,7 @@ class BuildPatchPlugin implements Plugin<Project> {
                             if(path.equals(extension.patchPileClass)){
                                 inputFile.delete()
                             }else{
-                                def bytes = Processor.processClass(inputFile)
+                                def bytes = Processor.processClass(inputFile,sigClassName)
                                 def hash = DigestUtils.shaHex(bytes)
                                 hashFile.append(MapUtils.format(path, hash))
                                 println(path + ":" + hash)
