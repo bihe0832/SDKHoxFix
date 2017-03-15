@@ -52,7 +52,12 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 		├─── build.sh SDK相关的自动构建脚本，生成SDK的jar、so、Demo、补丁文件
 		│
 	   	└─── README.md 项目介绍
-	 
+	   	
+### 运行方法
+
+如何修改配置及运行工程，请参考本人博客：[终端基于gradle的开源项目运行环境配置指引](
+http://blog.bihe0832.com/android-as-gradle-config.html)
+
 ### 代码介绍
 	
 - SDK热更之Demo工程介绍：[http://blog.bihe0832.com/sdk_hotfix_demo_project.html](http://blog.bihe0832.com/sdk_hotfix_demo_project.html)
@@ -67,7 +72,6 @@ Android-HoxFix-SDK-Native-Java（Android 上SDK的代码热更方案）
 ](http://blog.bihe0832.com/sdk_hotfix_so_abi.html)
 
 	目前的demo中只使用了arm的so，但是对于SDK的热更新，肯定要提供完整的so，当需要提供完整的so的时候，怎么下发正确的so主要在这边文章介绍
-
 
 
 - SDK热更之SDKHotfix待优化点：[http://blog.bihe0832.com/sdk_hotfix_need_to_do.html](http://blog.bihe0832.com/sdk_hotfix_need_to_do.html)
