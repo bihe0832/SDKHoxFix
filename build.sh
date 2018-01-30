@@ -102,7 +102,13 @@ if [ "$1"x = "patch"x ];then
   cp -r $localPath/MD5/bin/temp/jar/bihe0832_patch.jar $localPath/MD5/bin/bihe0832_patch.jar
   # 使用build-tools将jar生成为dex
   $ANDROID_HOME/build-tools/23.0.2/dx --dex --output=$localPath/MD5/bin/bihe0832_patch_dex.jar $localPath/MD5/bin/temp/jar/bihe0832_patch.jar
-  cp -r $localPath/MD5/bin/bihe0832_patch_dex.jar $localPath/bin/bihe0832_patch_dex.jar
+
+  mkdir $localPath/bin/Patch
+  cp -r $localPath/MD5/bin/bihe0832_patch_dex.jar $localPath/bin/Patch/bihe0832_patch_dex.jar
+  cp -r $localPath/MD5/bin/bihe0832_patch.jar $localPath/bin/Patch/bihe0832_patch.jar
+
+  cp -r $localPath/MD5/sdk/build/intermediates/ndk/release/lib/armeabi $localPath/bin/Patch/
+  checkResult
   # 删除临时文件夹
   rm -fr $localPath/MD5/bin/temp
   echo "********SDK build patch end*******"
@@ -130,6 +136,7 @@ cp -r $localPath/MD5/sdk/build/intermediates/ndk/release/lib/armeabi $localPath/
 checkResult
 
 cp -r $localPath/MD5/bin/bihe0832MD5.jar $localPath/bin/MD5/bihe0832MD5.jar
+cp -r $localPath/MD5/bin/bihe0832MD5_old.jar $localPath/bin/MD5/bihe0832MD5_old.jar
 cp -r $localPath/MD5/bin/temp/*_hash.txt $localPath/MD5/bin/
 cp -r $localPath/MD5/bin/*_hash.txt $localPath/bin/MD5/
 # 保存新版本SDK中所有文件对应的md5
