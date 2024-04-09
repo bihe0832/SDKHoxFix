@@ -5,7 +5,7 @@ import android.util.Log;
 import com.bihe0832.md5.Consts;
 
 /**
- * Created by hardyshi on 16/3/21.
+ * Created by zixie on 16/3/21.
  * 测试热更是否OK
  */
 public class FixInfo {

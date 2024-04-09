@@ -6,7 +6,7 @@ import android.content.Context;
 import com.bihe0832.hotfix.impl.HotFixManager;
 
 /**
- * Created by hardyshi on 2016/10/26.
+ * Created by zixie on 2016/10/26.
  */
 public class HotFixApi {
     public static void onCreate(Context context){

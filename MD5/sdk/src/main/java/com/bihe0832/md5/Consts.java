@@ -2,7 +2,7 @@ package com.bihe0832.md5;
 
 
 /**
- * Created by hardyshi on 16/4/27.
+ * Created by zixie on 16/4/27.
  */
 public class Consts {
 

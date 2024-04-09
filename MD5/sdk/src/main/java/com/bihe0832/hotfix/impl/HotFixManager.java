@@ -10,7 +10,7 @@ import com.bihe0832.hotfix.impl.consts.HotFixConsts;
 import java.io.File;
 
 /**
- * Created by hardyshi on 16/3/21.
+ * Created by zixie on 16/3/21.
  * 热更内容加载
  */
 public class HotFixManager {

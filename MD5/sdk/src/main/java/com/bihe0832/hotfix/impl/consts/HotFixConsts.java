@@ -1,7 +1,7 @@
 package com.bihe0832.hotfix.impl.consts;
 
 /**
- * Created by hardyshi on 16/4/27.
+ * Created by zixie on 16/4/27.
  */
 public class HotFixConsts {
 
